@@ -8,27 +8,52 @@
     <title>Address Book</title>
   </head>
   <body>
-    <h1>Address Book</h1>
-    <h2>Add a contact:</h2>
-    <form id="new-Contact">
-      <label for="newFirst">First Name</label>
-      <input type="text" id="newFirst">
-      <label for="newLast">Last Name</label>
-      <input type="text" id="newLast">
-      <label for="newNumber">Phone Number</label>
-      <input type="text" id="newNumber">
-      <button type="submit">Add</button>
-    </form>
-
-    <h2>Contacts:</h2>
-    <ul id="contacts">
-    </ul>
-
-    <div id="showContact">
-      <p>First Name: <span class="firstName"></span></p>
-      <p>Last Name: <span class="lastName"></span></p>
-      <p>Phone Number: <span class="phoneNumber"></span></p>
-      <div id="buttons">
+    <div class="container">
+      <h1>Address Book</h1>
+        <div class="row">
+          <div class="col-md-6">
+            <hr>
+            <h2>Add a Contact:</h2>
+            <form id="new-Contact">
+              <div class="form-group" id="forPicture">
+                <label for="newPicture">Picture</label>
+                <input type="file" name="" value="">
+                <img id="newPicture" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/upload-icon.png" alt="Image preview">
+              </div>
+              <div class="form-group">
+                <label for="newFirst">First Name</label>
+                <input type="text" id="newFirst">
+              </div>
+              <div class="form-group">
+                <label for="newLast">Last Name</label>
+                <input type="text" id="newLast">
+              </div>
+              <div class="form-group">
+                <label for="newNumber">Phone Number</label>
+                <input type="text" id="newNumber">
+              </div>
+              <div class="form-group">
+                <label for="newAddress">Address</label>
+                <input type="text" id="newAddress">
+              </div>
+              <button type="submit">Add</button>
+            </form>
+            <hr>
+            <h2>Contacts:</h2>
+            <ul id="contacts">
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <div id="showContact">
+              <p>First Name: <span class="firstName"></span></p>
+              <p>Last Name: <span class="lastName"></span></p>
+              <p>Phone Number: <span class="phoneNumber"></span></p>
+              <p>Picture: <span class="picture"></span></p>
+              <p>Address: <span class="address"></span></p>
+              <div id="buttons">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

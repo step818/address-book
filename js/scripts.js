@@ -35,10 +35,12 @@
 }
 
 // Business Logic for Contacts ---------
-function Contact(firstName, lastName, phoneNumber) {
+function Contact(firstName, lastName, phoneNumber, picture, address) {
   this.firstName = firstName,
   this.lastName = lastName,
-  this.phoneNumber = phoneNumber
+  this.phoneNumber = phoneNumber,
+  this.address = address,
+  this.picture = picture
 }
 
 Contact.prototype.fullName = function() {
@@ -53,17 +55,19 @@ function attachContactListeners() {
   });
   $("#buttons").on("click", ".deleteButton", function() {
     addressBook.deleteContact(this.id);
-    $("#showContact").hide();
+    $("#showContact").toggle();
     displayContactDetails(addressBook);
   });
 };
 
 function showContact(contactId) {
   var contact = addressBook.findContact(contactId);
-  $("#showContact").show();
+  $("#showContact").toggle();
   $(".firstName").html(contact.firstName);
   $(".lastName").html(contact.lastName);
   $(".phoneNumber").html(contact.phoneNumber);
+  $(".address").html(contact.address);
+  $(".picture").html(contact.picture);
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" + + contact.id + ">Delete</button>");
@@ -86,7 +90,9 @@ $(document).ready(function(){
     var inputtedFirstName = $("input#newFirst").val();
     var inputtedLastName = $("input#newLast").val();
     var inputtedPhoneNumber = $("input#newNumber").val();
-    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+    var inputtedAddress = $("input#newAddress").val();
+    var inputtedPicture = $("input#newPicture").val();
+    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedAddress, inputtedPicture);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
   })
