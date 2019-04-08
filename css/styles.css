@@ -73,3 +73,8 @@ input, label {
   margin: 20px;
   border-radius: 25px;
 }
+
+#contacts:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
