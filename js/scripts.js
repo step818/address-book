@@ -47,6 +47,28 @@ Contact.prototype.fullName = function() {
 //User interface logic
 var addressBook = new AddressBook();
 
+function attachContactListeners() {
+  $("ul#contacts").on("click", "li", function(){
+    showContact(this.id);
+  });
+  $("#buttons").on("click", ".deleteButton", function() {
+    addressBook.deleteContact(this.id);
+    $("#showContact").hide();
+    displayContactDetails(addressBook);
+  });
+};
+
+function showContact(contactId) {
+  var contact = addressBook.findContact(contactId);
+  $("#showContact").show();
+  $(".firstName").html(contact.firstName);
+  $(".lastName").html(contact.lastName);
+  $(".phoneNumber").html(contact.phoneNumber);
+  var buttons = $("#buttons");
+  buttons.empty();
+  buttons.append("<button class='deleteButton' id=" + + contact.id + ">Delete</button>");
+}
+
 function displayContactDetails(addressBookToDisplay) {
   var contactsList = $("ul#contacts");
   var htmlForContactInfo = "";
@@ -54,9 +76,11 @@ function displayContactDetails(addressBookToDisplay) {
     htmlForContactInfo += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "</li>";
   });
   contactsList.html(htmlForContactInfo);
+
 };
 
 $(document).ready(function(){
+  attachContactListeners();
   $("form#new-Contact").submit(function(event){
     event.preventDefault();
     var inputtedFirstName = $("input#newFirst").val();
