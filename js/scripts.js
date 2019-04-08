@@ -35,7 +35,7 @@
 }
 
 // Business Logic for Contacts ---------
-function Contact(firstName, lastName, phoneNumber, picture, address) {
+function Contact(firstName, lastName, phoneNumber, address, picture) {
   this.firstName = firstName,
   this.lastName = lastName,
   this.phoneNumber = phoneNumber,
@@ -50,7 +50,7 @@ Contact.prototype.fullName = function() {
 var addressBook = new AddressBook();
 
 function attachContactListeners() {
-  $("ul#contacts").on("click", "li", function(){
+  $("ol#contacts").on("click", "li", function(){
     showContact(this.id);
   });
   $("#buttons").on("click", ".deleteButton", function() {
@@ -74,19 +74,27 @@ function showContact(contactId) {
   $(".picture").html(contact.picture);
   var buttons = $("#buttons");
   buttons.empty();
-  buttons.append("<button class='deleteButton' id=" + + contact.id + ">Delete</button>");
+  buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
 }
 
 function displayContactDetails(addressBookToDisplay) {
-  var contactsList = $("ul#contacts");
+  var contactsList = $("ol#contacts");
   var htmlForContactInfo = "";
   addressBookToDisplay.contacts.forEach(function(contact) {
-    htmlForContactInfo += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "</li>";
+    htmlForContactInfo += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "</li>" + "<hr>";
   });
   contactsList.html(htmlForContactInfo);
 
 };
-
+function readURL(input){
+  if(input.files && input.files[0]){
+    var reader = new FileReader();
+    reader.onload = function(e){
+      $("#newPicture").attr('src', e.target.result);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 $(document).ready(function(){
   attachContactListeners();
   $("form#new-Contact").submit(function(event){
@@ -95,7 +103,7 @@ $(document).ready(function(){
     var inputtedLastName = $("input#newLast").val();
     var inputtedPhoneNumber = $("input#newNumber").val();
     var inputtedAddress = $("input#newAddress").val();
-    var inputtedPicture = $("input#newPicture").val();
+    var inputtedPicture = '<img src="'+ $("#newPicture").attr("src")+'">';
     var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedAddress, inputtedPicture);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);

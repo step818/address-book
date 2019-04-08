@@ -2,12 +2,16 @@
 
 #showContact {
   display: none;
+  margin:5%;
   background-color: #dec773;
   border-radius: 25px;
   opacity :1s;
   animation: fade 2s linear forwards;
 }
-
+#inline {
+  margin:5%;
+  display: inline-block;
+}
 @keyframes fade {
   0%,100% {opacity: 0}
   100% {opacity: 1}
@@ -27,7 +31,10 @@
 }
 
 img#newPicture {
-  float: right;
+  position: fixed;
+  right: 50%;
+  top: 30%;
+
 }
 
 h1 {
@@ -40,7 +47,7 @@ p {
 
 #buttons {
   text-align: center;
-
+  display: inline-block;
 }
 
 button#topSubmit {
@@ -48,6 +55,21 @@ button#topSubmit {
   display: inline-block;
 }
 
-#findFunction {
+/*#findFunction {
   float: right;
+}*/
+
+.searchField {
+  float: right;
+}
+
+input, label {
+  display: block;
+}
+
+#showContact img{
+  width: 100px;
+  float: right;
+  margin: 20px;
+  border-radius: 25px;
 }

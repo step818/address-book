@@ -11,14 +11,17 @@
     <div class="container">
       <h1>Address Book</h1>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-7">
             <hr>
             <h2>Add a Contact:</h2>
-            <input type="text" name="find" id="findFunction">
+            <div class="searchField">
+              <p><span id="inputField">Input ID to find</span></p>
+              <input type="text" name="find" id="findFunction">
+            </div>
             <form id="new-Contact">
               <div class="form-group" id="forPicture">
                 <label for="newPicture">Picture</label>
-                <input type="file" name="" value="">
+                <input type="file" onchange="readURL(this);"/>
                 <img id="newPicture" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/upload-icon.png" alt="Image preview">
               </div>
               <div class="form-group">
@@ -41,18 +44,20 @@
             </form>
             <hr>
             <h2>Contacts:</h2>
-            <ul id="contacts">
-            </ul>
+            <ol id="contacts">
+            </ol>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <div id="showContact">
-              <p>First Name: <span class="firstName"></span></p>
-              <p>Last Name: <span class="lastName"></span></p>
-              <p>Phone Number: <span class="phoneNumber"></span></p>
-              <p>Picture: <span class="picture"></span></p>
-              <p>Address: <span class="address"></span></p>
-              <div id="buttons">
-            </div>
+              <p><span class="picture"></span></p>
+              <div id="inline">
+                <p>First Name: <span class="firstName"></span></p>
+                <p>Last Name: <span class="lastName"></span></p>
+                <p>Phone Number: <span class="phoneNumber"></span></p>
+                <p>Address: <span class="address"></span></p>
+                <div id="buttons">
+                </div>
+              </div>
           </div>
         </div>
       </div>
