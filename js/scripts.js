@@ -55,14 +55,18 @@ function attachContactListeners() {
   });
   $("#buttons").on("click", ".deleteButton", function() {
     addressBook.deleteContact(this.id);
-    $("#showContact").toggle();
+    $("#showContact").hide();
+    displayContactDetails(addressBook);
+  });
+  $("#findFunction").keyup(function() {
+    showContact($("#findFunction").val());
     displayContactDetails(addressBook);
   });
 };
 
 function showContact(contactId) {
   var contact = addressBook.findContact(contactId);
-  $("#showContact").toggle();
+  $("#showContact").show();
   $(".firstName").html(contact.firstName);
   $(".lastName").html(contact.lastName);
   $(".phoneNumber").html(contact.phoneNumber);

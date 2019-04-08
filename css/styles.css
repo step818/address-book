@@ -1,9 +1,20 @@
+
+
 #showContact {
   display: none;
+  background-color: #dec773;
+  border-radius: 25px;
+  opacity :1s;
+  animation: fade 2s linear forwards;
+}
+
+@keyframes fade {
+  0%,100% {opacity: 0}
+  100% {opacity: 1}
 }
 
 #forPicture {
-  float: right;
+  float: inherit;
 }
 
 .containers {
@@ -16,5 +27,27 @@
 }
 
 img#newPicture {
+  float: right;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  margin-left: 5%;
+}
+
+#buttons {
+  text-align: center;
+
+}
+
+button#topSubmit {
+  text-align: center;
+  display: inline-block;
+}
+
+#findFunction {
   float: right;
 }
