@@ -34,13 +34,20 @@
   return false;
 }
 
+AddressBook.prototype.addAddress = function () {
+
+}
+
 // Business Logic for Contacts ---------
-function Contact(firstName, lastName, phoneNumber, address, picture) {
+function Contact(firstName, lastName, phoneNumber, homeAddress, workAddress, picture, personalEmail, workEmail) {
   this.firstName = firstName,
   this.lastName = lastName,
   this.phoneNumber = phoneNumber,
-  this.address = address,
-  this.picture = picture
+  this.homeAddress = homeAddress,
+  this.workAddress = workAddress
+  this.picture = picture,
+  this.personalEmail = personalEmail,
+  this.workEmail = workEmail
 }
 
 Contact.prototype.fullName = function() {
@@ -70,8 +77,11 @@ function showContact(contactId) {
   $(".firstName").html(contact.firstName);
   $(".lastName").html(contact.lastName);
   $(".phoneNumber").html(contact.phoneNumber);
-  $(".address").html(contact.address);
+  $(".homeAddress").html(contact.homeAddress);
+  $(".workAddress").html(contact.workAddress);
   $(".picture").html(contact.picture);
+  $(".personalEmail").html(contact.personalEmail);
+  $(".workEmail").html(contact.workEmail);
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
@@ -102,9 +112,12 @@ $(document).ready(function(){
     var inputtedFirstName = $("input#newFirst").val();
     var inputtedLastName = $("input#newLast").val();
     var inputtedPhoneNumber = $("input#newNumber").val();
-    var inputtedAddress = $("input#newAddress").val();
+    var inputtedHomeAddress = $("input#homeAddress").val();
+    var inputtedWorkAddress = $("input#workAddress").val();
     var inputtedPicture = '<img src="'+ $("#newPicture").attr("src")+'">';
-    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedAddress, inputtedPicture);
+    var inputtedPersonalEmail = $("input#personalEmail").val();
+    var inputtedWorkEmail = $("input#workEmail").val();
+    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedHomeAddress, inputtedWorkAddress, inputtedPicture, inputtedPersonalEmail, inputtedWorkEmail);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
   })
